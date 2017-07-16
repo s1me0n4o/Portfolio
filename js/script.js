@@ -9,10 +9,39 @@
 //         console.log(skills);
 //     }
 // }
-function on() {
-    document.getElementById("thumb-overlay").style.display = "block";
+// function on() {
+//     document.getElementById("thumb-overlay").style.display = "block";
+// }
+
+// function off() {
+//     document.getElementById("thumb-overlay").style.display = "none";
+// }
+
+$(function() {
+    smoothScrool(300);
+    workBelt();
+});
+
+function smoothScrool(duration) {
+    $('a[href^="#"]').on('click', function(event) {
+        var target = $($(this).attr('href'));
+        if (target.length) {
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: target.offset().top
+            }, duration);
+        }
+    });
 }
 
-function off() {
-    document.getElementById("thumb-overlay").style.display = "none";
+function workBelt() {
+    $('.thumb-container').click(function() {
+        $('.work-belt').css('left', '-100%');
+
+    });
+
+    $('work-return').click(function() {
+        $('.work-belt').css('left', '0%');
+
+    });
 }
